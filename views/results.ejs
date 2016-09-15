@@ -1,0 +1,45 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+		<img src="http://www.clker.com/cliparts/I/Z/o/3/K/j/paper-lanterns-hi.png" height="100" width="100">
+        <h1>Responses</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+		<a href="/quiz" class="btn btn-default btn-sm">Try Again</a>
+    </div>
+
+    <div class="row">
+		<% responses.forEach(function(element, index) {%>
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span><img src="https://cdn2.iconfinder.com/data/icons/solar_system_png/512/Moon.png" height="30" width="30"></img></span>Question <%= (index + 1) %></h3>
+				<p>
+					<strong>You responded with <%= element %></strong><br>
+				</p>
+				<p><% if (element === answers[index]) { score++;%>
+				Correct answer.
+				<% } else { %>
+				Wrong answer.
+				<% } %>
+				</p>
+			</div>
+		</div>
+		<% }); %>
+		<p class="text-center"><% if (score === 3) { %>
+		Congrats you got everything right!
+		<% } else { %>
+		Try again!
+		<% } %>
+		<p>
+    </div>
+</div>
+</body>
+</html>

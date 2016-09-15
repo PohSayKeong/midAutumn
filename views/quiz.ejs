@@ -1,0 +1,41 @@
+<!-- views/profile.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+		<img src="http://www.clker.com/cliparts/I/Z/o/3/K/j/paper-lanterns-hi.png" height="100" width="100">
+        <h1></span>Quiz</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+		<form action="/quiz" method="POST">
+			<% questions.forEach(function(element, index) {%>
+			<div class="col-sm-6">
+				<div class="well">
+					<h3><span><img src="https://cdn2.iconfinder.com/data/icons/solar_system_png/512/Moon.png" height="30" width="30"></img></span>Question <%= (index + 1) %></h3>
+					<p>
+						<strong><%= element.question %></strong><br>
+						<input type="hidden" value="<%= element.id %>" name="questionIndex<%= (index + 1) %>">
+						<input type="radio" value="<%= element.option1 %>" name="question<%= (index + 1) %>"><%= element.option1 %><br>
+						<input type="radio" value="<%= element.option2 %>" name="question<%= (index + 1) %>"><%= element.option2 %><br>
+
+					</p>
+				</div>
+			</div>
+			<% }); %>
+			<input type="submit" value="Submit" class="btn btn-primary btn-block">
+		</form>
+    </div>
+
+</div>
+</body>
+</html>
